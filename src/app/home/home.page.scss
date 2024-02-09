@@ -82,11 +82,12 @@ ion-item{
 
 .listMedicos {
   white-space: nowrap; /* Evita que los elementos de la lista se dividan en varias líneas */
-  overflow-x: auto; /* Agrega scroll horizontal si los elementos no caben en la pantalla */
+  overflow-y: auto; /* Agrega scroll horizontal si los elementos no caben en la pantalla */
   -webkit-overflow-scrolling: touch; /* Habilita el scroll suave en iOS */
   margin-top: 2%;
   background-color: rgba(255, 255, 255, 0);
   list-style: none;
   display: flex;
+  flex-direction: column;
   justify-content: center;
 }

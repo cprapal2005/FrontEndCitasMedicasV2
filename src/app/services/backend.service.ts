@@ -66,4 +66,11 @@ export class BackendService {
     return this.http.post(`${this.apiUrl}/auth/login`, usuario)
   }
 
+  updatePersona(id: number, token: any): Observable<any>{
+    const headers = new HttpHeaders()
+      .set('Content-type', 'application/json')
+      .set('Authorization', "Bearer " + token.token);
+    return this.http.put(`${this.apiUrl}/persona/update/${id}`, token.persona,{ headers })
+  }
+
 }
