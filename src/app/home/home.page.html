@@ -1,0 +1,65 @@
+
+
+<ion-content color="primary">
+
+  <ion-fab slot="fixed" vertical="top" horizontal="start">
+    <ion-fab-button>
+      <ion-icon name="chevron-forward-circle"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="end">
+      <ion-fab-button>
+        <ion-icon name="person-circle" size="Large" (click)="irPaginaCuenta()"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button>
+        <ion-icon name="power-outline" size="Large" (click)="cerrarSesion()"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+
+  <div class="radio-search">
+    <ion-searchbar shape="round" class="item-search" #searchbar (ionInput)="obtenerDatosDesdeBackend(searchbar.value!)"></ion-searchbar>
+  </div>
+
+  <div class="divAbajo" style="text-align: start; font-size: 30px;">
+    <ion-label color="dark" slot="center" style="margin-left: 10px; margin-top: 30px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Categorías</ion-label>
+    <ion-list>
+      <ion-item *ngFor="let item of especializaciones" class="horizontal-list-item" color="primary">
+          <ion-card-header class="ion-align-items-center" color="white" (click)="buscarDoctores(item.id)">
+            <ion-icon [name]="obtenerIcono(item.nombre)" size="large"></ion-icon>
+            <ion-card-title>{{ item.nombre }}</ion-card-title>
+          </ion-card-header>
+      </ion-item>
+    </ion-list>
+
+    <ion-modal [isOpen]="isOpen" (didDismiss)="isOpen = false"
+    [initialBreakpoint]="0.50"
+    [breakpoints]="[0, 0.25, 0.5, 0.75]"
+    handleBehavior="cycle">
+      <ng-template>
+      <ion-content>
+      <ion-list *ngIf="!flag">
+        <ion-item  class="items-medicos">
+          <ion-card >
+            <img alt="Silhouette of mountains" src="..\assets\icon\noDoctors.png" />
+            <ion-card-header color="primary">
+              <ion-card-title>No hay medicos</ion-card-title>
+            </ion-card-header>
+          </ion-card>
+        </ion-item>
+        </ion-list>
+        <ion-list *ngIf="flag" class="listMedicos">
+        <ion-item *ngFor="let item of medicos" class="items-medicos">
+          <ion-card>
+            <img alt="Silhouette of mountains" src="..\assets\icon\avatar.png" />
+            <ion-card-header color="primary">
+              <ion-card-title (click)="irPaginaCita(item)">{{item.persona.nombre}}</ion-card-title>
+            </ion-card-header>
+          </ion-card>
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ng-template>
+    </ion-modal>
+  </div>
+
+</ion-content>

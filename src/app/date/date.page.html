@@ -1,0 +1,19 @@
+<ion-content class="content">
+  <ion-fab slot="fixed" vertical="top" horizontal="start" (click)='myBackButton()'>
+    <ion-fab-button>
+      <ion-icon name="chevron-back-sharp"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <div class="date-container">
+    <h3>Medico: {{persona.nombre}}</h3>
+    <h3>Centro Medico: {{centroMedico.nombre}}</h3>
+    <h1 class="title">Fecha</h1>
+    <ion-datetime [(ngModel)]="fechaSeleccionada" presentation="date" min="{{minDate}}"></ion-datetime>
+    <h1 class="title">Hora</h1>
+    <ion-datetime [(ngModel)]="horaSeleccionada" presentation="time" displayFormat="HH:mm" pickerFormat="HH:mm" placeholder="Seleccionar hora" minuteValues="0,30" hourValues="8,9,10,11,12,13,16,17,18,19" class="date-time"></ion-datetime>
+    <ion-button class="btnCogerCita" color="primary" (click)="agregarCita()">Coger cita</ion-button>
+  </div>
+</ion-content>
+
+

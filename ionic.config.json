@@ -1,0 +1,7 @@
+{
+  "name": "FrontEndCitasMedicas",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

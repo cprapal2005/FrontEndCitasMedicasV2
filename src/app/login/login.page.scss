@@ -1,0 +1,54 @@
+ion-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Asegura que la altura del contenido ocupe el 100% del viewport height */
+    --background: white;
+    position: relative;
+}
+
+img{
+    width: 40%;
+    margin: 10%;
+}
+
+.login-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 80%;
+    height: 80%;
+    margin: auto;
+}
+
+.container-img {
+    background-color: #428CFF;
+    border-radius: 50%;
+    margin-bottom: 10%;
+}
+
+ion-item {
+    border-top-left-radius: 5%;
+    border-top-right-radius: 5%;
+    border-bottom-left-radius: 5%;
+    border-bottom-right-radius: 5%;
+    --background: white;
+    border: 1px solid #428CFF;
+    color: #428CFF;
+    --highlight-color-invalid: #428CFF; // invalid underline color
+        --highlight-color-valid: #428CFF; // valid underline color
+}
+
+.titulo {
+    font-size: large;
+    font-weight: bolder;
+}
+
+.btnRegistro {
+    --background: white;
+    color: #428CFF;
+    --border-style: solid;
+    --border-width: 1px;
+}

@@ -1,0 +1,92 @@
+ion-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  --ion-background-color: #E0E7EF;
+}
+
+ion-searchbar {
+  width: 100%;
+  max-width: 400px; /* Ajusta el ancho máximo según tus necesidades */
+  margin-bottom: 16px;
+  --background: white;
+  padding: 10px;
+  --border-radius: 30px;
+}
+
+.horizontal-list-item {
+  display: inline-block;
+  margin: 5px;
+  background-color: rgba(255, 255, 255, 0.829);
+}
+
+ion-list {
+  white-space: nowrap; /* Evita que los elementos de la lista se dividan en varias líneas */
+  overflow-x: auto; /* Agrega scroll horizontal si los elementos no caben en la pantalla */
+  -webkit-overflow-scrolling: touch; /* Habilita el scroll suave en iOS */
+  margin-top: 2%;
+  background-color: rgba(255, 255, 255, 0);
+  list-style: none;
+  padding: 1px;
+  --offset-bottom: auto!important;
+  --overflow: hidden;
+  overflow: auto;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+ion-card {
+  background-color: rgba(240, 248, 255, 0);
+   /* Espaciado entre las cards */
+  max-width: 200px; /* Ajusta el ancho máximo de las cards según tus necesidades */
+}
+
+ion-icon {
+  margin-right: 5%; /* Opcional: Ajusta el margen según necesites */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+ion-item{
+  border: 1px solid #E0E7EF;
+  border-radius: 10px;
+  
+}
+.divAbajo{
+  background-color: #E0E7EF;
+  border: 1px solid white;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  padding-top: 100px;
+  height: 100%;
+  margin-top: 20%;
+}
+
+.radio-search{
+  position: absolute;
+  top: 60px;
+  left: 10%;
+}
+
+.items-medicos::part(native) {
+  background: #E0E7EF;
+  border-color: #E0E7EF;
+  display: flex;
+  justify-content: center;
+  border-width: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.listMedicos {
+  white-space: nowrap; /* Evita que los elementos de la lista se dividan en varias líneas */
+  overflow-x: auto; /* Agrega scroll horizontal si los elementos no caben en la pantalla */
+  -webkit-overflow-scrolling: touch; /* Habilita el scroll suave en iOS */
+  margin-top: 2%;
+  background-color: rgba(255, 255, 255, 0);
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
