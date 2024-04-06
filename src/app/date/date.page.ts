@@ -18,6 +18,7 @@ export class DatePage implements OnInit {
   datoRecibido:any
   persona: any;
   centroMedico: any;
+  paciente:any
 
   constructor(private router:Router, private backendService:BackendService, private route: ActivatedRoute, private alertController: AlertController, private location: Location, private storage: StorageService) {
     this.minDate = new Date().toISOString();
@@ -82,6 +83,8 @@ export class DatePage implements OnInit {
     this.route.params.subscribe(params => {
       const medico = params['id'];
       const medicoParseo = parseInt(medico);
+      const idCentroMedico = params['idCentroMedico']
+      const centroParseo = parseInt(idCentroMedico)
       this.storage.get(this.storage.usuarioActual)?.then((token) => {
         this.backendService.getCentroMedico(params['idCentroMedico'], token).subscribe(
           (response) => {
@@ -89,7 +92,7 @@ export class DatePage implements OnInit {
             if (response){
               this.centroMedico = response;
             }
-            else this.mostrarAlerta('Lo sentimos...','Está ocupado en este momento.',['OK'])
+            else this.mostrarAlerta('Lo sentimos...','A',['OK'])
           },
           (error) => {
             console.error('Error al obtener datos del backend:', error);
@@ -104,17 +107,30 @@ export class DatePage implements OnInit {
             if (response){
               this.persona = response;
             }
-            else this.mostrarAlerta('Lo sentimos...','Está ocupado en este momento.',['OK'])
+            else this.mostrarAlerta('Lo sentimos...','B',['OK'])
           },
           (error) => {
             console.error('Error al obtener datos del backend:', error);
           }
         );
       });
+
+      this.storage.get(this.storage.usuarioActual)?.then((token) => {
+        this.backendService.getPaciente(token.persona.id, token).subscribe(
+          (response) => {
+            this.paciente = response;
+            this.datoRecibido.idPaciente = this.paciente.id
+          },
+          (error) => {
+            console.error('Error al obtener datos del backend:', error);
+          }
+        );
+      });
+      
+
       this.datoRecibido = {
         idMedico: medicoParseo,
-        idPaciente : 1,
-        idCentroMedico : 1,
+        idCentroMedico : centroParseo,
         planta : '2',
         sala : 'A',
         fecha : '2024-01-27',

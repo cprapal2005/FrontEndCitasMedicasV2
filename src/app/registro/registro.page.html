@@ -1,45 +1,57 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>Ajustes</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content class="ion-padding">
-  <ion-item>
-    <ion-label>Centro Médico</ion-label>
-    <ion-select >
-      <!-- <ion-select-option value="es">Español</ion-select-option>
-      <ion-select-option value="en">Inglés</ion-select-option> -->
-    </ion-select>
-  </ion-item>
 
-  <ion-item>
-    <ion-label position="stacked">Nombre</ion-label>
-    <ion-input placeholder="Nombre"></ion-input>
-  </ion-item>
-
-  <ion-item>
-    <ion-label position="stacked">Primer apellido</ion-label>
-    <ion-input placeholder="Nombre"></ion-input>
-  </ion-item>
-
-  <ion-item>
-    <ion-label position="stacked">Segundo apellido</ion-label>
-    <ion-input placeholder="Nombre"></ion-input>
-  </ion-item>
-
-  <ion-item>
-    <ion-label position="stacked">Dni</ion-label>
-    <ion-input placeholder="Nombre"></ion-input>
-  </ion-item>
-
-  <ion-item>
-    <ion-label position="stacked">Teléfono</ion-label>
-    <ion-input placeholder="Nombre"></ion-input>
-  </ion-item>
-
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab slot="fixed" vertical="top" horizontal="start" (click)='myBackButton()'>
     <ion-fab-button>
+      <ion-icon name="chevron-back-sharp"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <div class="settings-container" [formGroup]="formularioPrincipal">
+
+    <ion-item>
+      <ion-label position="floating">Nombre</ion-label>
+      <ion-input formControlName="nombre"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Primer apellido</ion-label>
+      <ion-input formControlName="apellido1"></ion-input> 
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Segundo apellido</ion-label>
+      <ion-input formControlName="apellido2"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Dni</ion-label>
+      <ion-input formControlName="dni"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Teléfono</ion-label>
+      <ion-input formControlName="telf"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Email</ion-label>
+      <ion-input formControlName="email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Usuario</ion-label>
+      <ion-input formControlName="username"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Contraseña</ion-label>
+      <ion-input formControlName="password"></ion-input>
+    </ion-item>
+
+  </div>
+
+  <ion-fab slot="fixed" vertical="bottom" horizontal="center" (click)="registrarPersona()">
+    <ion-fab-button class="btnSave">
       <ion-icon name="save"></ion-icon>
     </ion-fab-button>
   </ion-fab>

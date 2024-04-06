@@ -2,6 +2,7 @@ import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { StorageService } from '../services/storage.service';
 import { BackendService } from '../services/backend.service';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-settings',
@@ -12,7 +13,7 @@ export class SettingsPage implements OnInit {
 
   persona: any;
 
-  constructor(private location: Location, private storage: StorageService, private backend: BackendService) {
+  constructor(private alertController: AlertController, private location: Location, private storage: StorageService, private backend: BackendService) {
 
     this.persona = {
       username: "",
@@ -51,9 +52,24 @@ export class SettingsPage implements OnInit {
   }
 
   actualizarPersona() {
-    this.storage.get(this.storage.usuarioActual)?.then((token) => {
-      this.backend.updatePersona(token.persona.id, this.persona);
+    this.storage.get(this.storage.usuarioActual)?.then((tokensito) => {
+      this.backend.updatePersona(tokensito.persona.id, {token:tokensito.token, persona:this.persona}).subscribe(data=>{
+        tokensito.persona = this.persona;
+        this.storage.set(this.storage.usuarioActual, tokensito);
+        this.mostrarAlerta("Perfil Actualizado", "Tu perfil ha sido actualizado correctamente",["OK"]);
+      })
     });
+    this.location.back()
+  }
+
+  private async mostrarAlerta(header_param:string,message_param:string,buttons_param:any[]) {
+    const alert = await this.alertController.create({
+        header: header_param,
+        message: message_param,
+        buttons: buttons_param
+    });
+
+    await alert.present();
   }
 
 }

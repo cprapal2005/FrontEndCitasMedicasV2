@@ -59,6 +59,7 @@ export class HomePage implements OnInit, AfterViewInit{
   }
 
   irPaginaCita(dato:any):void{
+    this.isOpen = false;
     this.router.navigate(['/date',dato]);
   }
 

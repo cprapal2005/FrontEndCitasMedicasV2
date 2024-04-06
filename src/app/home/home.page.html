@@ -3,14 +3,14 @@
 <ion-content color="primary">
 
   <ion-fab slot="fixed" vertical="top" horizontal="start">
-    <ion-fab-button>
-      <ion-icon name="chevron-forward-circle"></ion-icon>
+    <ion-fab-button class="btnSettings">
+      <ion-icon name="settings"></ion-icon>
     </ion-fab-button>
     <ion-fab-list side="end">
-      <ion-fab-button>
+      <ion-fab-button class="btnSettings">
         <ion-icon name="person-circle" size="Large" (click)="irPaginaCuenta()"></ion-icon>
       </ion-fab-button>
-      <ion-fab-button>
+      <ion-fab-button class="btnSettings">
         <ion-icon name="power-outline" size="Large" (click)="cerrarSesion()"></ion-icon>
       </ion-fab-button>
     </ion-fab-list>
@@ -31,7 +31,7 @@
       </ion-item>
     </ion-list>
 
-    <ion-modal [isOpen]="isOpen">
+    <!-- <ion-modal [isOpen]="isOpen">
       <ng-template>
         <ion-header color="primary">
           <ion-toolbar>
@@ -40,8 +40,8 @@
               <ion-button (click)="isOpen = false">Close</ion-button>
             </ion-buttons>
           </ion-toolbar>
-        </ion-header>
-      <ion-content>
+        </ion-header> -->
+      <!-- <ion-content> -->
       <ion-list *ngIf="!flag">
         <ion-item  class="items-medicos">
           <ion-card >
@@ -62,9 +62,9 @@
           </ion-card>
         </ion-item>
       </ion-list>
-    </ion-content>
+    <!-- </ion-content>
   </ng-template>
-    </ion-modal>
+    </ion-modal> -->
   </div>
 
 </ion-content>

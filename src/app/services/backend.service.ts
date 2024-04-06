@@ -62,6 +62,13 @@ export class BackendService {
     return this.http.get(`${this.apiUrl}/persona/getPersonaId/${id}`, { headers })
   }
 
+  getPaciente(id: number, token: any): Observable<any>{
+    const headers = new HttpHeaders()
+      .set('Content-type', 'application/json')
+      .set('Authorization', "Bearer " + token.token);
+    return this.http.get(`${this.apiUrl}/paciente/${id}`, { headers })
+  }
+
   login(usuario: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/auth/login`, usuario)
   }
@@ -71,6 +78,17 @@ export class BackendService {
       .set('Content-type', 'application/json')
       .set('Authorization', "Bearer " + token.token);
     return this.http.put(`${this.apiUrl}/persona/update/${id}`, token.persona,{ headers })
+  }
+
+  register(persona:any): Observable<any>{
+    return this.http.post(`${this.apiUrl}/auth/register`, persona)
+  }
+
+  addPaciente(persona: any, token: any): Observable<any> {
+    const headers = new HttpHeaders()
+      .set('Content-type', 'application/json')
+      .set('Authorization', "Bearer " + token.token);
+    return this.http.post(`${this.apiUrl}/paciente/create`, {idPersona:persona.id, fechaNacimiento:"2000-10-10", tarjetaSanitaria:"123456789012"}, { headers });
   }
 
 }
